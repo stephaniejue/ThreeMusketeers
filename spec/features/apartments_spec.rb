@@ -45,6 +45,7 @@ RSpec.feature "Apartments", type: :feature do
         expect(page).to have_content("M-W 9-5")
       end
       And "I can see the listing on a map" do
+        # check for map element
         expect(page).to have_css('div#apartment_map')
       end
     end
