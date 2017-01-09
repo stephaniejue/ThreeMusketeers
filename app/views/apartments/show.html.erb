@@ -45,5 +45,17 @@
   <%= @apartment.contact_hours %>
 </p>
 
+<p>
+  <strong>Latitude:</strong>
+  <%= @apartment.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @apartment.longitude %>
+</p>
+
 <%= link_to 'Edit', edit_apartment_path(@apartment) %> |
 <%= link_to 'Back', apartments_path %>
+
+<div id="apartment_map" data-apartment-id="<%=@apartment.id%>">Google map will appear here dude</div>
