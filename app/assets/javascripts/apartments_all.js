@@ -1,37 +1,37 @@
 function createGmapAll(data) {
+  console.log(data)
   handler = Gmaps.build('Google');
   handler.buildMap ({
-      provider: {},
-      internal: {id: 'apartment_map_all'}
-    },
-    // function() {
-    //   showLocations(data);
-    // },
-    function() {
-      markers = handler.addMarkers(data);
-      handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
-      // handler.getMap().setZoom();
-    }
-  );
+    provider: {},
+    internal: {id: 'apartment_map_all'}
+  },
+  function() {
+    markers = handler.addMarkers(data);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    // handler.getMap().setZoom();
+  }
+);
 }
-//
-// function showLocations(data) {
-//   if (navigator.geolocation) {
-//       navigator.geolocation.getCurrentPosition(function(position) {
-//       // Add our position to the collection of markers
-//       data[data.length] = {
-//         lat: position.coords.latitude,
-//         lng: position.coords.longitude,
-//         infowindow: "You!"
-//       };
-//       placeMakers(data, markers);
-//     });
-//   } else {
-//       alert("Geolocation is not available.");
-//       placeMakers(data, markers)
-//   }
-// }
+
+function placeMarkersAll(data) {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      // Add our position to the collection of markers
+      var my_data = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+        infowindow: "You!"
+      };
+      data.push(my_data);
+      createGmapAll(data);
+    });
+  } else {
+    alert("Geolocation is not available.");
+    createGmapAll(data);
+  }
+}
+
 
 function loadAndCreateGmapAll() {
   if ($("#apartment_map_all").length > 0) {
@@ -40,7 +40,7 @@ function loadAndCreateGmapAll() {
       url: '/apartments/map_all',
       method: 'GET',
       success: function(data) {
-        createGmapAll(data);
+        placeMarkersAll(data);
       },
       error: function (jqXHR, testStatus, errorThrown) {
         alert("Getting map data failed: " + errorThrown);
