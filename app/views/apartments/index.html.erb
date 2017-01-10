@@ -11,6 +11,8 @@
       <th>Postal code</th>
       <th>State</th>
       <th>Country</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
       <th>Contact name</th>
       <th>Contact phone</th>
       <th>Contact hours</th>
@@ -27,6 +29,8 @@
         <td><%= apartment.postal_code %></td>
         <td><%= apartment.state %></td>
         <td><%= apartment.country %></td>
+        <td><%= apartment.latitude %></td>
+        <td><%= apartment.longitude %></td>
         <td><%= apartment.contact_name %></td>
         <td><%= apartment.contact_phone %></td>
         <td><%= apartment.contact_hours %></td>
@@ -41,3 +45,7 @@
 <br>
 
 <%= link_to 'New Apartment', new_apartment_path %>
+
+<br><br>
+
+<div id="apartment_map_all">Google map will appear here dude</div>
