@@ -5,6 +5,9 @@ class ApartmentsController < ApplicationController
   # GET /apartments.json
   def index
     @apartments = Apartment.all
+    if params[:search].present?
+      @apartments = Apartment.fuzzy_search(params[:search])
+    end
   end
 
   # GET /apartments/1
@@ -89,6 +92,6 @@ class ApartmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apartment_params
-      params.require(:apartment).permit(:street_one, :street_two, :city, :postal_code, :state, :country, :contact_name, :contact_phone, :contact_hours)
+      params.require(:apartment).permit(:street_one, :street_two, :city, :postal_code, :state, :country, :contact_name, :contact_phone, :contact_hours, :image)
     end
 end

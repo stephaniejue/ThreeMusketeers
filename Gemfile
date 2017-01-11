@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'geocoder'
 gem 'underscore-rails'
 gem 'gmaps4rails'
+gem 'paperclip'
+gem 'textacular', '~> 3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7.1'

@@ -8,7 +8,7 @@ function createGmap(data) {
       markers = handler.addMarkers(data);
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
-      handler.getMap().setZoom(7);
+      // handler.getMap().setZoom(7);
     }
   );
 };
