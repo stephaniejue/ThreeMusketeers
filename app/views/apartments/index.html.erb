@@ -2,6 +2,12 @@
 
 <h1>Listing Apartments</h1>
 
+<% if user_signed_in? %>
+  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+<% else %>
+  <%= link_to('Login', new_user_session_path)  %>
+<% end %><br><br>
+
 <%= form_tag("/", method: "get") do %>
   <%= label_tag(:search, "Search for:") %>
   <%= text_field_tag(:search) %>
@@ -18,11 +24,12 @@
       <th>Postal code</th>
       <th>State</th>
       <th>Country</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
+      <!-- <th>Latitude</th>
+      <th>Longitude</th> -->
       <th>Contact name</th>
       <th>Contact phone</th>
       <th>Contact hours</th>
+      <th>User Email</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -37,23 +44,26 @@
         <td><%= apartment.postal_code %></td>
         <td><%= apartment.state %></td>
         <td><%= apartment.country %></td>
-        <td><%= apartment.latitude %></td>
-        <td><%= apartment.longitude %></td>
+        <!-- <td><%= apartment.latitude %></td>
+        <td><%= apartment.longitude %></td> -->
         <td><%= apartment.contact_name %></td>
         <td><%= apartment.contact_phone %></td>
         <td><%= apartment.contact_hours %></td>
+        <td><%= apartment.user.email %></td>
         <td><%= link_to 'Show', apartment %></td>
+        <% if apartment.user == current_user %>
         <td><%= link_to 'Edit', edit_apartment_path(apartment) %></td>
         <td><%= link_to 'Destroy', apartment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Apartment', new_apartment_path %>
-
+<% if user_signed_in? %>
+  <%= link_to 'New Apartment', new_apartment_path %>
+<% end %>
 <br><br>
 
 <div id="apartment_map_all">Google map will appear here dude</div>
