@@ -87,10 +87,12 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.paperclip_defaults = {
-    :storage => :s3,
-    :s3_region => 'us-west-1',
-    :s3_credentails => {
-      :bucket => 'apartment-app-images',
+    storage: :s3,
+    s3_credentials: {
+      bucket: ENV.fetch('apartment-app-images'),
+      access_key_id: ENV.fetch('S3_KEY'),
+      secret_access_key: ENV.fetch('S3_SECRET'),
+      s3_region: ENV.fetch('us-west-1'),
     }
   }
 end
