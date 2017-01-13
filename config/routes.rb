@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'apartments#index'
   get "admin" => "admin#index"
   put "admin/:id" => "admin#update"
   patch "admin/:id" => "admin#update"
@@ -11,9 +12,7 @@ Rails.application.routes.draw do
     get :map_all, on: :collection
   end
 
-  devise_scope :user do
-    root 'apartments#index'
-  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
