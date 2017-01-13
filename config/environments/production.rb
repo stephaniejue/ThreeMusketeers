@@ -87,9 +87,10 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.paperclip_defaults = {
-    storage: :s3,
     :storage => :s3,
-    # :s3_host_name => 'REMOVE_THIS_LINE_IF_UNNECESSARY',
-    :bucket => 'apartment-app-images'
+    :s3_region => 'us-west-1',
+    :s3_credentails => {
+      :bucket => 'apartment-app-images',
+    }
   }
 end
