@@ -1,0 +1,31 @@
+<h1>Admin</h1>
+
+<h1>Users</h1>
+<table>
+  <thead>
+    <thead>
+      <tr>
+        <th>Email</th><th>Role</th>
+      </tr>
+    </thead>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td><% user.roles.each do |role| %>
+        <%= role.name %>
+        <% end %>
+      </td>
+      <td>
+        <%= form_tag("/admin/" + user.id.to_s + "?role=admin", method: :PUT) do %>
+          <input type="submit" value="Make Admin"/>
+        <% end %>
+      </td>
+      <!-- <td>
+        <%= link_to "Destroy", user_registration_path, :confirm => 'Are you sure you want to destroy this account?', method: :delete %>
+      </td> -->
+    </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -1,15 +1,23 @@
 Rails.application.routes.draw do
+  get "admin" => "admin#index"
+  put "admin/:id" => "admin#update"
+  patch "admin/:id" => "admin#update"
+  delete "user/:id" => "admin#destroy"
+
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
 
   resources :apartments do
     get 'map_location'
     get :map_all, on: :collection
   end
+
+  devise_scope :user do
+    root 'apartments#index'
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'apartments#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

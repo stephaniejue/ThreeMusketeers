@@ -11,6 +11,20 @@
 </head>
 <body>
 
+<% if !current_user.nil? %>
+      <%= current_user.email + ' (' + current_user.roles.pluck(:name).join(",") + ')' %>
+<% end %>
+
+<% if current_user.has_role? :admin %>
+| <%= link_to('Admin Page', admin_path) %> |
+<% end %>
+
+<% if user_signed_in? %>
+  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+<% else %>
+  <%= link_to('Login', new_user_session_path)  %>
+<% end %><br>
+
 <%= yield %>
 
 </body>
