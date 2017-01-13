@@ -1,18 +1,19 @@
-function createGmapAll(data) {
-  console.log(data)
-  handler = Gmaps.build('Google');
-  handler.buildMap ({
-    provider: {},
-    internal: {id: 'apartment_map_all'}
-  },
-  function() {
-    markers = handler.addMarkers(data);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-    // handler.getMap().setZoom();
+
+function loadAndCreateGmapAll() {
+  // alert("Clicked success!");
+  if ($("#apartment_map_all").length > 0) {
+    $.ajax({
+      dataType: 'json',
+      url: '/apartments/map_all',
+      method: 'GET',
+      success: function(data) {
+        placeMarkersAll(data);
+      },
+      error: function (jqXHR, testStatus, errorThrown) {
+        alert("Getting map data failed: " + errorThrown);
+      }
+    });
   }
-);
-}
 
 function placeMarkersAll(data) {
   if (navigator.geolocation) {
@@ -32,22 +33,23 @@ function placeMarkersAll(data) {
   }
 }
 
-
-function loadAndCreateGmapAll() {
-  if ($("#apartment_map_all").length > 0) {
-    $.ajax({
-      dataType: 'json',
-      url: '/apartments/map_all',
-      method: 'GET',
-      success: function(data) {
-        placeMarkersAll(data);
-      },
-      error: function (jqXHR, testStatus, errorThrown) {
-        alert("Getting map data failed: " + errorThrown);
-      }
-    });
+function createGmapAll(data) {
+  console.log(data)
+  handler = Gmaps.build('Google');
+  handler.buildMap ({
+    provider: {},
+    internal: {id: 'apartment_map_all'}
+  },
+  function() {
+    markers = handler.addMarkers(data);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    // handler.getMap().setZoom();
   }
-};
+);
+}
 
+};
+// $('#search_button').on('click', loadAndCreateGmapAll);
 $(document).on('ready', loadAndCreateGmapAll);
 $(document).on('turbolinks:load', loadAndCreateGmapAll);

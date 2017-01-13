@@ -29,11 +29,20 @@ class ApartmentsController < ApplicationController
   end
 
   def map_all
-    @all_apartments = Apartment.all
-    @hash = Gmaps4rails.build_markers(@all_apartments) do |apartment, marker|
-      marker.lat(apartment.latitude)
-      marker.lng(apartment.longitude)
-      marker.infowindow("<strong>" + apartment.address + "</strong>")
+    if params[:search].present?
+      @search_apartments = Apartment.search(params[:search])
+      @hash = Gmaps4rails.build_markers(@search_apartments) do |apartment, marker|
+        marker.lat(apartment.latitude)
+        marker.lng(apartment.longitude)
+        marker.infowindow("<strong>" + apartment.address + "</strong>")
+      end
+    elsif params[:search].blank?
+      @all_apartments = Apartment.all
+      @hash = Gmaps4rails.build_markers(@all_apartments) do |apartment, marker|
+        marker.lat(apartment.latitude)
+        marker.lng(apartment.longitude)
+        marker.infowindow("<strong>" + apartment.address + "</strong>")
+      end
     end
     render json: @hash.to_json
   end
