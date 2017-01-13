@@ -13,14 +13,15 @@ class User < ActiveRecord::Base
   end
 
   def self.from_omniauth(auth)
+    if auth.provider = "facebook"
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      if auth.provider = "facebook"
-        user.email = auth.uid + "@" + auth.provider + ".com"
+        user.email = auth.info.email
         user.password = Devise.friendly_token[0,20]
-      elsif auth.provider = "twitter"
-        user.email = auth.info.nickname + "@" + auth.provider + ".com"
-        user.password = Devise.friendly_token[0,20]
-      end
+    elsif auth.provider = "twitter"
+      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.nickname + "@" + auth.provider + ".com"
+      user.password = Devise.friendly_token[0,20]
+    end
     end
   end
 end
