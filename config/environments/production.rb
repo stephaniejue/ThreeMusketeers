@@ -94,7 +94,6 @@ Rails.application.configure do
       secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
       s3_region: ENV.fetch('AWS_REGION'),
     },
-    s3_host_name: "s3-#{ENV['AWS_REGION']}.amazonaws.com",
-    :url => ":s3_host_name"
+    s3_host_name: "s3-#{ENV['AWS_REGION']}.amazonaws.com"
   }
 end
