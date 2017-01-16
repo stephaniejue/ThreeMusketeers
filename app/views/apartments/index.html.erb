@@ -5,7 +5,7 @@
 <%= form_tag("/", method: "get") do %>
   <%= label_tag(:search, "Search for:") %>
   <%= text_field_tag(:search) %>
-  <%= submit_tag("Search", :id=> "search_button") %>
+  <%= submit_tag("Search", :id=> "search_button", class: "button") %>
 <% end %><br>
 
 <table>
@@ -56,7 +56,7 @@
 
 <br>
 <% if user_signed_in? %>
-  <%= link_to 'New Apartment', new_apartment_path %>
+  <%= link_to 'New Apartment', new_apartment_path, class: "button" %>
 <% end %>
 <br><br>
 

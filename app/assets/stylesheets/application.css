@@ -14,12 +14,22 @@
  *= require_self
  */
 
-body, html {
-  margin: 20px;
+#content {
+  margin: 40px 80px 40px 80px;
 }
 .field {
   width: 25%;
 }
-input[type="text"] {
+#new_user{
   width: 25%;
+}
+
+#new_apartment input[type="text"], #search {
+  width: 350px;
+}
+.field {
+  width: 100%;
+}
+a, a:visited {
+  color: white;
 }
