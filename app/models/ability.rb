@@ -5,6 +5,7 @@ class Ability
 
     if user.nil?
       user = User.new
+      user.add_role "default"
     end
     if user.has_role? :admin
       can :manage, :all
