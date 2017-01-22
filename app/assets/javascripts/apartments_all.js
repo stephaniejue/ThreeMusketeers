@@ -22,13 +22,16 @@ function placeMarkersAll(data) {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       // Add our position to the collection of markers
-      console.log("your position is: " + my_data);
+
       var my_data = {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
         infowindow: "You!"
       };
+      console.log("Your coords are: ");
+      console.log(my_data);
       data.push(my_data);
+      consolelog("data pushed")
       createGmapAll(data);
     });
   } else {
