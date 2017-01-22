@@ -1,11 +1,13 @@
-<h1>Admin</h1>
+<h1>Admin</h1><br>
 
-<h1>Users</h1>
+<h3>Manage Users</h3>
 <table>
   <thead>
     <thead>
       <tr>
-        <th>Email</th><th>Role</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Actions</th>
       </tr>
     </thead>
   </thead>
@@ -19,12 +21,10 @@
       </td>
       <td>
         <%= form_tag("/admin/" + user.id.to_s + "?role=admin", method: :PUT) do %>
-          <input type="submit" value="Make Admin", class="button secondary"/>
+        <input type="submit" value="Make Admin", class="button tiny"/>
         <% end %>
+        <!-- <%= link_to "Destroy", user_registration_path, :confirm => 'Are you sure you want to destroy this account?', method: :delete, class: "button tiny alert"%> -->
       </td>
-      <!-- <td>
-        <%= link_to "Destroy", user_registration_path, :confirm => 'Are you sure you want to destroy this account?', method: :delete %>
-      </td> -->
     </tr>
   <% end %>
   </tbody>
