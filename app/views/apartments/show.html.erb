@@ -1,36 +1,39 @@
 <p id="notice"><%= notice %></p>
 
 
-<div class="row">
-  <div class="medium-2 columns">
-    <%= link_to image_tag(@apartment.image.url(:large)), @apartment.image.url %><br>
-  </div>
-  <div class="medium-4 columns">
-    <p>
-      <strong>Address</strong><br>
-      <%= @apartment.street_one %><br>
-      <% if @apartment.street_two.present? %>
-        <%= @apartment.street_two %><br>
-      <% end %>
-      <%= @apartment.city %>
-      <%if @apartment.state.present? %>,
-      <%= @apartment.state %>
-      <% end%>
-      <%= @apartment.postal_code %><br>
-      <%= @apartment.country %>
-    </p>
-    <br>
-    <p>
-      <strong>Contact Info</strong><br>
-      Name: <%= @apartment.contact_name %><br>
-      Phone: <%= @apartment.contact_phone %><br>
-      Hours: <%= @apartment.contact_hours %>
-    </p>
-  </div>
-  <div class="medium-6">
-    <div id="apartment_map" data-apartment-id="<%=@apartment.id%>">Google map will appear here dude</div>
-  </div>
-</div>
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <%= link_to image_tag(@apartment.image.url(:large)), @apartment.image.url %><br>
+      </td>
+      <td>
+        <p>
+          <strong>Address</strong><br>
+          <%= @apartment.street_one %><br>
+          <% if @apartment.street_two.present? %>
+            <%= @apartment.street_two %><br>
+          <% end %>
+          <%= @apartment.city %>
+          <%if @apartment.state.present? %>,
+          <%= @apartment.state %>
+          <% end%>
+          <%= @apartment.postal_code %><br>
+          <%= @apartment.country %>
+        </p>
+        <p>
+          <strong>Contact Info</strong><br>
+          Name: <%= @apartment.contact_name %><br>
+          Phone: <%= @apartment.contact_phone %><br>
+          Hours: <%= @apartment.contact_hours %>
+        </p>
+      </td>
+      <td>
+        <div id="apartment_map" data-apartment-id="<%=@apartment.id%>">Google map will appear here dude</div>
+      </td>
+    </tr>
+  </tbody>
+<table>
 
 <br><br>
 
