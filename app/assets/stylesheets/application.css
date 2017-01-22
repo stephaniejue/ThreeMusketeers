@@ -20,21 +20,29 @@
 .field {
   width: 25%;
 }
-#new_user{
-  width: 25%;
+.devise-box{
+  width: 350px;
 }
 
 #new_apartment input[type="text"], #search {
   width: 350px;
 }
-.field {
+.devise-box .field {
   width: 100%;
 }
-a {
-  color: #3FA172;
-  background-color: white;
+.devise-box a {
+  width: 350px;
+  color: #256044;
+  /*background-color: white;*/
 }
-a:visited {
-  color: #78bd9c;
-  background-color: white;
+.a:visited {
+  color: #3FA172;
+  /*background-color: white;*/
+}
+a:hover {
+  color: #3fa141;
+  background-color: inherit;
+}
+.button:visited {
+  color: white;
 }
