@@ -22,7 +22,7 @@
 }
 
 
-#new_apartment input[type="text"], #search, .edit_apartment input[type="text"] {
+#new_apartment input[type="text"], #search, .edit_apartment > input[type="text"], .edit_apartment input[type="text"], .edit_apartment.input[type="text"] {
   width: 350px;
 }
 
@@ -43,7 +43,7 @@ a:visited {
 }
 a:hover {
   color: #3fa141;
-  background-color: inherit;
+  background-color: transparent;
 }
 .button:visited {
   color: white;
