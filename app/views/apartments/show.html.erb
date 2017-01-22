@@ -1,39 +1,38 @@
 <p id="notice"><%= notice %></p>
 
 
-<table>
-  <tbody>
-    <tr>
-      <td>
-        <%= link_to image_tag(@apartment.image.url(:large)), @apartment.image.url %><br>
-      </td>
-      <td>
-        <p>
-          <strong>Address</strong><br>
-          <%= @apartment.street_one %><br>
-          <% if @apartment.street_two.present? %>
-            <%= @apartment.street_two %><br>
-          <% end %>
-          <%= @apartment.city %>
-          <%if @apartment.state.present? %>,
-          <%= @apartment.state %>
-          <% end%>
-          <%= @apartment.postal_code %><br>
-          <%= @apartment.country %>
-        </p>
-        <p>
-          <strong>Contact Info</strong><br>
-          Name: <%= @apartment.contact_name %><br>
-          Phone: <%= @apartment.contact_phone %><br>
-          Hours: <%= @apartment.contact_hours %>
-        </p>
-      </td>
-      <td>
-        <div id="apartment_map" data-apartment-id="<%=@apartment.id%>">Google map will appear here dude</div>
-      </td>
-    </tr>
-  </tbody>
-<table>
+
+<div class="row">
+  <div class="large-4 medium-6 small-12 columns">
+    <%= link_to image_tag(@apartment.image.url(:large)), @apartment.image.url %><br><br>
+  </div>
+  <div class="large-4 medium-6 small-12 columns">
+    <p>
+      <strong>Address</strong><br>
+      <%= @apartment.street_one %><br>
+      <% if @apartment.street_two.present? %>
+        <%= @apartment.street_two %><br>
+      <% end %>
+      <%= @apartment.city %>
+      <%if @apartment.state.present? %>,
+      <%= @apartment.state %>
+      <% end%>
+      <%= @apartment.postal_code %><br>
+      <%= @apartment.country %>
+    </p>
+    <p>
+      <strong>Contact Info</strong><br>
+      Name: <%= @apartment.contact_name %><br>
+      Phone: <%= @apartment.contact_phone %><br>
+      Hours: <%= @apartment.contact_hours %>
+    </p>
+  </div>
+  <div class="large-4 medium-0 small-0 columns">
+  </div>
+</div>
+<br>
+
+<div id="apartment_map" data-apartment-id="<%=@apartment.id%>">Google map will appear here dude</div>
 
 <br><br>
 
