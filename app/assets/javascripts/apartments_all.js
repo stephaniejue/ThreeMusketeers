@@ -1,6 +1,7 @@
 
 function loadAndCreateGmapAll() {
   // alert("Clicked success!");
+  console.log("loadAndCreateGmapAll running");
   if ($("#apartment_map_all").length > 0) {
     $.ajax({
       dataType: 'json',
@@ -16,9 +17,12 @@ function loadAndCreateGmapAll() {
   }
 
 function placeMarkersAll(data) {
+  console.log("placeMarkersAll running");
+  console.log(data);
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       // Add our position to the collection of markers
+      console.log("your position is: " + my_data);
       var my_data = {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
@@ -28,13 +32,14 @@ function placeMarkersAll(data) {
       createGmapAll(data);
     });
   } else {
-    alert("Geolocation is not available.");
+    console.log("Geolocation is not available.");
     createGmapAll(data);
   }
 }
 
 function createGmapAll(data) {
-  console.log(data)
+  console.log("createGmapAll running");
+  console.log(data);
   handler = Gmaps.build('Google');
   handler.buildMap ({
     provider: {},
