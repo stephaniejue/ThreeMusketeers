@@ -22,7 +22,7 @@
 }
 
 
-#new_apartment input[type="text"], #search, .edit_apartment  {
+#new_apartment input[type="text"], #search, .edit_apartment input[type="text"] {
   width: 350px;
 }
 
