@@ -2,12 +2,12 @@
 
 
 <div class="row">
-    <div class="medium-3 columns">
+    <div class="large-2 columns">
       <%= link_to image_tag(@apartment.image.url(:large)), @apartment.image.url %><br>
     </div>
-    <div class="medium-3 columns">
+    <div class="large-4 columns">
       <p>
-        <strong>Address:</strong>
+        <strong>Address:</strong><br>
         <%= @apartment.street_one %><br>
         <%= @apartment.street_two %><br>
         <%= @apartment.city %>,
@@ -17,9 +17,9 @@
       </p>
       <br>
       <p>
-        <strong>Contact Info:</strong>
-        Name: <%= @apartment.contact_name %>
-        Phone: <%= @apartment.contact_phone %>
+        <strong>Contact Info:</strong><br>
+        Name: <%= @apartment.contact_name %><br>
+        Phone: <%= @apartment.contact_phone %><br>
         Hours: <%= @apartment.contact_hours %>
       </p>
     </div>
@@ -44,6 +44,6 @@
 <br><br>
 
 <% if @apartment.user == current_user %>
-  <%= link_to 'Edit', edit_apartment_path(@apartment), class: "button tiny" %> |
+  <%= link_to 'Edit', edit_apartment_path(@apartment), class: "button tiny" %> 
 <% end %>
 <%= link_to 'Back', apartments_path, class: "button tiny secondary" %>

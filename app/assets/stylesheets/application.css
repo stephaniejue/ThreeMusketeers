@@ -32,7 +32,9 @@
 }
 a {
   color: #3FA172;
+  background-color: white;
 }
 a:visited {
   color: #78bd9c;
+  background-color: white;
 }

@@ -41,9 +41,9 @@
   <div class="top-bar-right">
     <ul class="dropdown menu" data-dropdown-menu>
         <li><% if user_signed_in? %>
-          <%= link_to 'Logout', destroy_user_session_path, :method=>'delete', class: 'button success' %>
+          <%= link_to 'Logout', destroy_user_session_path, :method=>'delete', class: 'button' %>
         <% else %>
-          <%= link_to 'Login', new_user_session_path, class: 'button succes' %>
+          <%= link_to 'Login', new_user_session_path, class: 'button' %>
         <% end %><li>
       </ul>
     </div>
