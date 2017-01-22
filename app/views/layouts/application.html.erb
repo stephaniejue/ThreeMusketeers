@@ -4,8 +4,11 @@
     <title>ThreeMusketeers</title>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="text/javascript">$(function(){ $(document).foundation(); });</script>
+    <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+
     <!-- Maps scripts -->
     <script src="//maps.google.com/maps/api/js?key=AIzaSyBxDv1zsN-SN5w1TQjY8GF8NSM4k7AEARw"></script>
     <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
@@ -55,5 +58,6 @@
     <div id="content">
       <%= yield %>
     </div>
+
   </body>
 </html>
