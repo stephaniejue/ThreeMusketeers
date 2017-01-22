@@ -20,22 +20,24 @@
 .field {
   width: 25%;
 }
-.devise-box{
+
+
+#new_apartment input[type="text"], #search, .edit_apartment  {
   width: 350px;
 }
 
-#new_apartment input[type="text"], #search {
+.devise-box{
   width: 350px;
 }
-.devise-box .field {
-  width: 100%;
-}
-.devise-box a {
-  width: 350px;
-  color: #256044;
-  /*background-color: white;*/
-}
-.a:visited {
+  .devise-box .field {
+    width: 100%;
+  }
+    .devise-box a {
+      width: 350px;
+      color: #256044;
+      /*background-color: white;*/
+    }
+a:visited {
   color: #3FA172;
   /*background-color: white;*/
 }
@@ -45,4 +47,7 @@ a:hover {
 }
 .button:visited {
   color: white;
+}
+.menu-text {
+  padding: 0px;
 }

@@ -19,7 +19,7 @@
   <div class="top-bar">
     <div class="top-bar-left">
       <ul class="dropdown menu" data-dropdown-menu>
-        <li class="menu-text">Apartment App</li>
+        <li class="menu-text">Apartments App</li>
         <!-- <li>
           <a href="#">One</a>
           <ul class="menu vertical">
@@ -30,7 +30,7 @@
         </li> -->
 
         <% if !current_user.nil? %>
-          <li><%= current_user.email + ' (' + current_user.roles.pluck(:name).join(",") + ')' %></li>
+          <li>Hello, <%= current_user.email + ' (' + current_user.roles.pluck(:name).join(",") + ')' %></li>
 
           <li><% if current_user.has_role? :admin %>
           | <%= link_to('Admin Page', admin_path) %> | </li><br>
@@ -40,11 +40,13 @@
     </div>
   <div class="top-bar-right">
     <ul class="dropdown menu" data-dropdown-menu>
+        <li><%= link_to 'Home', apartments_path%></li>
         <li><% if user_signed_in? %>
-          <%= link_to 'Logout', destroy_user_session_path, :method=>'delete', class: 'button' %>
+          <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
         <% else %>
-          <%= link_to 'Login', new_user_session_path, class: 'button' %>
-        <% end %><li>
+          <%= link_to 'Login', new_user_session_path %>
+        <% end %>
+        </li>
       </ul>
     </div>
     <!-- <div class="top-bar-right">

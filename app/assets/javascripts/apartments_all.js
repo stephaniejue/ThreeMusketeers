@@ -31,7 +31,7 @@ function placeMarkersAll(data) {
       console.log("Your coords are: ");
       console.log(my_data);
       data.push(my_data);
-      consolelog("data pushed")
+      console.log("data pushed")
       createGmapAll(data);
     });
   } else {
