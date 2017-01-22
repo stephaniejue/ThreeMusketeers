@@ -1,31 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<table>
-  <tbody>
-    <tr>
-      <td>
-        <%= link_to image_tag(@apartment.image.url(:large)), @apartment.image.url %><br>
-      </td>
-      <td>
-        <p>
-          <strong>Address:</strong>
-          <%= @apartment.street_one %><br>
-          <%= @apartment.street_two %><br>
-          <%= @apartment.city %>,
-          <%= @apartment.state %>
-          <%= @apartment.postal_code %>
-          <%= @apartment.country %>
-        </p>
-      </td>
-        <p>
-          <strong>Contact Info:</strong>
-          Name: <%= @apartment.contact_name %>
-          Phone: <%= @apartment.contact_phone %>
-          Hours: <%= @apartment.contact_hours %>
-        </p>
-    </tr>
-  </tbody>
-</table>
+
+<div class="row">
+    <div class="medium-3 columns">
+      <%= link_to image_tag(@apartment.image.url(:large)), @apartment.image.url %><br>
+    </div>
+    <div class="medium-3 columns">
+      <p>
+        <strong>Address:</strong>
+        <%= @apartment.street_one %><br>
+        <%= @apartment.street_two %><br>
+        <%= @apartment.city %>,
+        <%= @apartment.state %>
+        <%= @apartment.postal_code %>
+        <%= @apartment.country %>
+      </p>
+      <br>
+      <p>
+        <strong>Contact Info:</strong>
+        Name: <%= @apartment.contact_name %>
+        Phone: <%= @apartment.contact_phone %>
+        Hours: <%= @apartment.contact_hours %>
+      </p>
+    </div>
+    <div class="medium-6 columns">
+    </div>
+</div>
+
 
 <!-- <p>
   <strong>Latitude:</strong>
@@ -40,6 +41,7 @@
 <div>
   <div id="apartment_map" data-apartment-id="<%=@apartment.id%>">Google map will appear here dude</div>
 </div>
+<br><br>
 
 <% if @apartment.user == current_user %>
   <%= link_to 'Edit', edit_apartment_path(@apartment), class: "button tiny" %> |
