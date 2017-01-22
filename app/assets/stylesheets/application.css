@@ -12,6 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *= require foundation_and_overrides
+
  */
 
 #content {
@@ -48,6 +50,10 @@ a:hover {
 .button:visited {
   color: white;
 }
-.menu-text {
+/*.menu-text {
   padding: 0px;
+}*/
+
+.column, .columns {
+  padding-left: 0px;
 }

@@ -30,13 +30,16 @@
   <div class="large-4 medium-0 small-0 columns">
   </div>
 </div>
-<br>
+
+
+<% if @apartment.user == current_user %>
+  <%= link_to 'Edit', edit_apartment_path(@apartment), class: "button tiny" %>
+  <%= link_to 'Destroy', @apartment, method: :delete, data: { confirm: 'Are you sure?' }, class: "button tiny alert" %>
+<% end %><br><br>
 
 <div id="apartment_map" data-apartment-id="<%=@apartment.id%>">Google map will appear here dude</div>
 
 <br><br>
 
-<% if @apartment.user == current_user %>
-  <%= link_to 'Edit', edit_apartment_path(@apartment), class: "button tiny" %>
-<% end %>
+
 <%= link_to 'Back', apartments_path, class: "button tiny secondary" %>

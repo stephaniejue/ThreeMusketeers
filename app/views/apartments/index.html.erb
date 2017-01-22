@@ -11,22 +11,25 @@
 <table>
   <thead>
     <tr>
-      <th>Image</th>
+      <th>Photo</th>
       <th>Address</th>
       <!-- <th>Latitude</th>
       <th>Longitude</th> -->
       <th>Contact Info</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <!-- <% if user_signed_in? %>
+        <th colspan="3"></th>
+      <% end %> -->
     </tr>
   </thead>
 
   <tbody>
     <% @apartments.each do |apartment| %>
       <tr>
-        <td><%= link_to image_tag(apartment.image.url(:small)), apartment %>
+        <td><%= link_to image_tag(apartment.image.url(:med)), apartment %>
         <td><%= apartment.street_one %><br>
-        <%= apartment.street_two %><br>
+        <% if apartment.street_two.present? %>
+          <%= apartment.street_two %><br>
+        <% end %>
         <%= apartment.city %>,
         <%= apartment.state %>
         <%= apartment.postal_code %>
@@ -35,12 +38,12 @@
         <td><%= apartment.longitude %></td> -->
         <td>Name: <%= apartment.contact_name %><br>
         Phone: <%= apartment.contact_phone %><br>
-        Hours: <%= apartment.contact_hours %></td>
-        <td><%= apartment.user.email %></td>
-        <% if @ability.can? :manage, apartment %>
+        Hours: <%= apartment.contact_hours %><br><br>
+        Listed by: <%= apartment.user.email %></td>
+        <!-- <% if @ability.can? :manage, apartment %>
         <td><%= link_to 'Edit', edit_apartment_path(apartment), class: "button tiny" %></td>
         <td><%= link_to 'Destroy', apartment, method: :delete, data: { confirm: 'Are you sure?' }, class: "button tiny alert" %></td>
-        <% end %>
+        <% end %> -->
       </tr>
     <% end %>
   </tbody>
