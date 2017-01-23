@@ -7,10 +7,14 @@ class ApartmentsController < ApplicationController
   # GET /apartments
   # GET /apartments.json
   def index
+    cookies.delete :search
     @apartments = Apartment.all
     @ability = Ability.new(current_user)
     if params[:search].present?
-      @apartments = Apartment.search(params[:search])
+      @apartments_by_apt = Apartment.search(params[:search])
+      @apartments_by_lister = Apartment.joins(:user).fuzzy_search(users: {email: params[:search]})
+      @apartments = @apartments_by_apt | @apartments_by_lister
+      cookies[:search] = params[:search]
     end
   end
 
@@ -30,20 +34,18 @@ class ApartmentsController < ApplicationController
   end
 
   def map_all
-    if params[:search].present?
-      @search_apartments = Apartment.search(params[:search])
-      @hash = Gmaps4rails.build_markers(@search_apartments) do |apartment, marker|
-        marker.lat(apartment.latitude)
-        marker.lng(apartment.longitude)
-        marker.infowindow("<strong>" + apartment.address + "</strong>")
-      end
-    elsif params[:search].blank?
-      @all_apartments = Apartment.all
-      @hash = Gmaps4rails.build_markers(@all_apartments) do |apartment, marker|
-        marker.lat(apartment.latitude)
-        marker.lng(apartment.longitude)
-        marker.infowindow("<strong>" + apartment.address + "</strong>")
-      end
+    if cookies[:search].present?
+      @apartments_by_apt = Apartment.search(cookies[:search])
+      @apartments_by_lister = Apartment.joins(:user).fuzzy_search(users: {email: cookies[:search]})
+      @apartments = @apartments_by_apt | @apartments_by_lister
+    else
+      @apartments = Apartment.all
+    end
+
+    @hash = Gmaps4rails.build_markers(@apartments) do |apartment, marker|
+      marker.lat(apartment.latitude)
+      marker.lng(apartment.longitude)
+      marker.infowindow("<strong>" + apartment.address + "</strong>")
     end
     render json: @hash.to_json
   end

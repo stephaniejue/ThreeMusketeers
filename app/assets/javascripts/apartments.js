@@ -1,4 +1,5 @@
 function createGmap(data) {
+  // console.log("createGmap running");
   handler = Gmaps.build('Google');
   handler.buildMap ({
       provider: {},
@@ -15,6 +16,7 @@ function createGmap(data) {
 
 
 function placeMarkers(data) {
+  // console.log("placeMarkers running");
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       // Add our position to the collection of markers
@@ -33,9 +35,9 @@ function placeMarkers(data) {
 }
 
 function loadAndCreateGmap() {
+  // console.log("loadAndCreateGmap running");
   if ($("#apartment_map").length > 0) {
     var apartmentId = $("#apartment_map").attr("data-apartment-id");
-
     $.ajax({
       dataType: 'json',
       url: '/apartments/' + apartmentId + '/map_location',

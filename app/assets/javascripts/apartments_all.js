@@ -1,7 +1,7 @@
 
 function loadAndCreateGmapAll() {
   // alert("Clicked success!");
-  console.log("loadAndCreateGmapAll running");
+  // console.log("loadAndCreateGmapAll running");
   if ($("#apartment_map_all").length > 0) {
     $.ajax({
       dataType: 'json',
@@ -17,8 +17,8 @@ function loadAndCreateGmapAll() {
   }
 
 function placeMarkersAll(data) {
-  console.log("placeMarkersAll running");
-  console.log(data);
+  // console.log("placeMarkersAll running");
+  // console.log(data);
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       // Add our position to the collection of markers
@@ -28,21 +28,21 @@ function placeMarkersAll(data) {
         lng: position.coords.longitude,
         infowindow: "You!"
       };
-      console.log("Your coords are: ");
-      console.log(my_data);
+      // console.log("Your coords are: ");
+      // console.log(my_data);
       data.push(my_data);
-      console.log("data pushed")
+      // console.log("data pushed")
       createGmapAll(data);
     });
   } else {
-    console.log("Geolocation is not available.");
+    // console.log("Geolocation is not available.");
     createGmapAll(data);
   }
 }
 
 function createGmapAll(data) {
-  console.log("createGmapAll running");
-  console.log(data);
+  // console.log("createGmapAll running");
+  // console.log(data);
   handler = Gmaps.build('Google');
   handler.buildMap ({
     provider: {},
@@ -60,4 +60,5 @@ function createGmapAll(data) {
 };
 // $('#search_button').on('click', loadAndCreateGmapAll);
 $(document).on('ready', loadAndCreateGmapAll);
+$("#search_button").on('click', loadAndCreateGmapAll);
 $(document).on('turbolinks:load', loadAndCreateGmapAll);
