@@ -13,3 +13,5 @@
 /tmp
 
 /config/aws.yml
+
+.DS_Store

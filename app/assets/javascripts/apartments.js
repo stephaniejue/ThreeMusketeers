@@ -23,6 +23,11 @@ function placeMarkers(data) {
       var my_data = {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
+        "picture": {
+          "url": "http://pngimages.net/sites/default/files/user-png-image-30725.png",
+          "width":  32,
+          "height": 32
+        },
         infowindow: "You!"
       };
       data.push(my_data);

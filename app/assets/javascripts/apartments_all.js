@@ -22,11 +22,15 @@ function placeMarkersAll(data) {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       // Add our position to the collection of markers
-
       var my_data = {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
-        infowindow: "You!"
+        "picture": {
+          "url": "http://pngimages.net/sites/default/files/user-png-image-30725.png",
+          "width":  32,
+          "height": 32
+        },
+        infowindow: "You!",
       };
       // console.log("Your coords are: ");
       // console.log(my_data);
