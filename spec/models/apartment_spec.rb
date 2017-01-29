@@ -6,7 +6,7 @@ RSpec.describe Apartment, type: :model do
       expect{Apartment.new}.not_to raise_error
     end
     it "should save" do
-      new_apartment = Apartment.new(street_one: "1550 Market", street_two: "", city: "San Diego", postal_code: "92101", state: "CA", country: "USA", contact_name: "Toma", contact_phone: "619-222-2222", contact_hours: "All day errrday")
+      new_apartment = Apartment.new(street_one: "1550 Market", street_two: "", city: "San Diego", postal_code: "92101", state: "CA", country: "USA", contact_name: "Toma", contact_phone: "619-222-2222", contact_hours: "All day errrday", image_file_name: "spec/fixtures/default.jpg")
       new_apartment.save
       expect(new_apartment.street_one).to eq "1550 Market"
       expect(new_apartment.street_two).to eq ""
@@ -17,6 +17,7 @@ RSpec.describe Apartment, type: :model do
       expect(new_apartment.contact_name).to eq "Toma"
       expect(new_apartment.contact_phone).to eq "619-222-2222"
       expect(new_apartment.contact_hours).to eq "All day errrday"
+      expect(new_apartment.image_file_name).to eq "spec/fixtures/default.jpg"
     end
     it "shoud have a latitude and longitude" do
       new_apartment = Apartment.new(street_one: "1550 Market", street_two: "", city: "San Diego", postal_code: "92101", state: "CA", country: "USA", contact_name: "Toma", contact_phone: "619-222-2222", contact_hours: "All day errrday")

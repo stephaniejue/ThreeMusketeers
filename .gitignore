@@ -14,4 +14,6 @@
 
 /config/aws.yml
 
+.env
+
 .DS_Store
