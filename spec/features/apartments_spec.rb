@@ -1,23 +1,33 @@
 require 'rails_helper'
 
 RSpec.feature "Apartments", type: :feature do
-  context 'Apartments page' do
+
+  before(:each) do
+   @user = User.create(email: "user@email.com", password: "password")
+  end
+
+  context 'Apartments homepage' do
     Steps 'Going to the Apartments homepage' do
       Given "I'm on localhost:3000" do
         visit "/"
       end
       Then "I should see 'Apartments'" do
-        expect(page).to have_content("Apartments")
+        expect(page).to have_content("Apartment Listings")
       end
     end
   end
   context 'Creating an apartment listing' do
-    Steps 'Going to the Apartments homepage' do
-      Given "I'm on localhost:3000" do
-        visit "/"
+    Steps 'Creating an apartment listing' do
+      Given "I'm on localhost:3000 and logged in" do
+        visit "/users/sign_in"
       end
-      Then "I should see 'Apartments'" do
-        expect(page).to have_content("Apartments")
+      Then 'I can login' do
+        fill_in "user_email", with: @user.email
+        fill_in "user_password", with: "password"
+        click_button "Log in"
+      end
+      And "I am taken to the Apartments page" do
+        expect(page).to have_content("Hello, #{@user.email}")
       end
       Then "I click 'New Apartment'" do
         click_link 'New Apartment'

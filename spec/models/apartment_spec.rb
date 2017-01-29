@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Apartment, type: :model do
   describe "Apartment" do
     it 'has to be real' do
-      expect{Apartment.new}.to_not raise_error
+      expect{Apartment.new}.not_to raise_error
     end
     it "should save" do
       new_apartment = Apartment.new(street_one: "1550 Market", street_two: "", city: "San Diego", postal_code: "92101", state: "CA", country: "USA", contact_name: "Toma", contact_phone: "619-222-2222", contact_hours: "All day errrday")

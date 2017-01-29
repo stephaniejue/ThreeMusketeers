@@ -1,17 +1,19 @@
 source 'https://rubygems.org'
 
-gem 'geocoder'
-gem 'underscore-rails'
-gem 'gmaps4rails'
-gem 'paperclip'
-gem 'textacular', '~> 3.0'
-gem 'devise'
-gem 'omniauth-twitter'
-gem 'omniauth-facebook'
-gem 'cancancan'
-gem 'rolify'
 gem 'aws-sdk', '~> 2.3'
+gem 'cancancan'
+gem 'devise'
 gem 'foundation-rails'
+gem 'geocoder'
+gem 'gmaps4rails'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'paperclip'
+gem 'rolify'
+gem 'rubocop', '~> 0.47.1', require: false
+gem 'rubocop-rspec', require: false
+gem 'textacular', '~> 3.0'
+gem 'underscore-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7.1'
@@ -52,18 +54,18 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'rspec-example_steps'
   gem 'launchy'
+  gem 'rspec-example_steps'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'quiet_assets'
+  gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

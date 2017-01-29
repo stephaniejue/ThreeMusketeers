@@ -19,7 +19,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     redirect_to root_path
   end
 
-  alias_method :twitter, :all
-  alias_method :facebook, :all
+  alias twitter all
+  alias facebook all
 
 end

@@ -1,5 +1,8 @@
 class ApartmentsController < ApplicationController
   before_action :set_apartment, only: [:show, :edit, :update, :destroy]
+  before_action :set_all_apartments, only: [:index, :map_all]
+  before_action :set_ability
+  before_action :delete_search_cookie, only: [:index]
   before_action :authenticate_user!, except: [:index, :show, :map_location, :map_all]
   skip_authorize_resource :only => [:index, :map_all]
   load_and_authorize_resource
@@ -7,13 +10,10 @@ class ApartmentsController < ApplicationController
   # GET /apartments
   # GET /apartments.json
   def index
-    cookies.delete :search
-    @apartments = Apartment.all
-    @ability = Ability.new(current_user)
     if params[:search].present?
-      @apartments_by_apt = Apartment.search(params[:search])
-      @apartments_by_lister = Apartment.joins(:user).fuzzy_search(users: {email: params[:search]})
-      @apartments = @apartments_by_apt | @apartments_by_lister
+      @apt_by_apt = Apartment.search(params[:search])
+      @apt_by_lister = Apartment.joins(:user).fuzzy_search(users: {email: params[:search]})
+      @apartments = @apt_by_apt | @apt_by_lister
       cookies[:search] = params[:search]
     end
   end
@@ -35,13 +35,10 @@ class ApartmentsController < ApplicationController
 
   def map_all
     if cookies[:search].present?
-      @apartments_by_apt = Apartment.search(cookies[:search])
-      @apartments_by_lister = Apartment.joins(:user).fuzzy_search(users: {email: cookies[:search]})
-      @apartments = @apartments_by_apt | @apartments_by_lister
-    else
-      @apartments = Apartment.all
+      @apt_by_apt = Apartment.search(cookies[:search])
+      @apt_by_lister = Apartment.joins(:user).fuzzy_search(users: {email: cookies[:search]})
+      @apartments = @apt_by_apt | @apt_by_lister
     end
-
     @hash = Gmaps4rails.build_markers(@apartments) do |apartment, marker|
       marker.lat(apartment.latitude)
       marker.lng(apartment.longitude)
@@ -110,6 +107,18 @@ class ApartmentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_apartment
       @apartment = Apartment.find(params[:id])
+    end
+
+    def set_all_apartments
+      @apartments = Apartment.all
+    end
+
+    def set_ability
+      @ability = Ability.new(current_user)
+    end
+
+    def delete_search_cookie
+      cookies.delete :search
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
