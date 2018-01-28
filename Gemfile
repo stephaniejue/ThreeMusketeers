@@ -9,7 +9,7 @@ gem 'geocoder'
 gem 'gmaps4rails'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
-gem 'paperclip'
+gem 'paperclip', '~> 5.2.0'
 gem 'rolify'
 gem 'rubocop', '~> 0.47.1', require: false
 gem 'rubocop-rspec', require: false

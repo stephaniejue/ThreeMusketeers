@@ -71,7 +71,7 @@ GEM
       xpath (~> 2.0)
     childprocess (0.5.9)
       ffi (~> 1.0, >= 1.0.11)
-    climate_control (0.1.0)
+    climate_control (0.2.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.1)
@@ -159,7 +159,7 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     orm_adapter (0.5.0)
-    paperclip (5.1.0)
+    paperclip (5.2.1)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       cocaine (~> 0.5.5)
@@ -314,7 +314,7 @@ DEPENDENCIES
   launchy
   omniauth-facebook
   omniauth-twitter
-  paperclip
+  paperclip (~> 5.2.0)
   pg (~> 0.15)
   quiet_assets
   rails (= 4.2.7.1)
@@ -336,4 +336,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.13.6
+   1.14.4
